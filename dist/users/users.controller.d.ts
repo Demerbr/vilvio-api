@@ -1,0 +1,142 @@
+import { UsersService } from './users.service';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
+import { PaginationDto } from '../common/dto/pagination.dto';
+import { UserStatus } from '@prisma/client';
+export declare class UsersController {
+    private readonly usersService;
+    constructor(usersService: UsersService);
+    create(createUserDto: CreateUserDto): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    findAll(paginationDto: PaginationDto): Promise<import("../common/dto/pagination.dto").PaginatedResult<Omit<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }, "password">>>;
+    findOne(id: number): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    update(id: number, updateUserDto: UpdateUserDto): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    remove(id: number): Promise<{
+        message: string;
+    }>;
+    updateStatus(id: number, status: UserStatus): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    addFine(id: number, amount: number): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    payFine(id: number, amount: number): Promise<{
+        status: import(".prisma/client").$Enums.UserStatus;
+        name: string;
+        id: number;
+        email: string;
+        password: string;
+        phone: string | null;
+        address: string | null;
+        age: number | null;
+        userType: import(".prisma/client").$Enums.UserType;
+        registrationDate: Date;
+        lastActivity: Date;
+        borrowedBooks: number[];
+        reservedBooks: number[];
+        fines: import("@prisma/client/runtime/library").Decimal;
+    }>;
+    getUserStats(id: number): Promise<{
+        user: {
+            id: number;
+            name: string;
+            email: string;
+            userType: import(".prisma/client").$Enums.UserType;
+            status: import(".prisma/client").$Enums.UserStatus;
+            fines: import("@prisma/client/runtime/library").Decimal;
+        };
+        stats: {
+            activeLoans: number;
+            overdueLoans: number;
+            totalLoans: number;
+            activeReservations: number;
+            totalReservations: number;
+            canBorrow: boolean;
+        };
+    }>;
+}
